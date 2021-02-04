@@ -3,6 +3,13 @@ music_Harry = "";
 
 status = "";
 
+get_status = "";
+
+get_status_2 = "";
+
+score_right = 0;
+score_left = 0;
+
 rightWristX = 0;
 rightWristY = 0;
 
@@ -34,6 +41,9 @@ function gotPose(results){
     if(results.length > 0){
         console.log(results);
 
+        score_left = results[0].pose.keypoints[9].score;
+        score_right = results[0].pose.keypoints[10].score;
+
         rightWristX = results[0].pose.rightWrist.x;
         rightWristY = results[0].pose.rightWrist.y;
 
@@ -52,9 +62,9 @@ function draw(){
     fill("blue");
     get_status = music_Harry.isPlaying();
 
-    get_status_2 = music_peter.isPlaying();    
+     get_status_2 = music_peter.isPlaying();
 
-    if(scoreleftwrist>0.2){
+    if(score_left>0.2){
         circle(leftWristX, leftWristY, 20);
         music_peter.stop();
 
@@ -64,7 +74,7 @@ function draw(){
         }
     }
 
-    if(scorerightwrist>0.2){
+    if(score_right>0.2){
         circle(rightWristX, rightWristY, 20);
         music_Harry.stop();
 

@@ -51,7 +51,8 @@ function draw(){
     stroke("blue");
     fill("blue");
     get_status = music_Harry.isPlaying();
-    
+
+    get_status_2 = music_peter.isPlaying();    
 
     if(scoreleftwrist>0.2){
         circle(leftWristX, leftWristY, 20);
@@ -60,6 +61,16 @@ function draw(){
         if(get_status == false){
         music_Harry.play();
         document.getElementById("song").innerHTML = "Harry Potter";
+        }
+    }
+
+    if(scorerightwrist>0.2){
+        circle(rightWristX, rightWristY, 20);
+        music_Harry.stop();
+
+        if(get_status_2 == false){
+        music_peter.play();
+        document.getElementById("song").innerHTML = "Peter Pan";
         }
     }
 }
